@@ -1,0 +1,9 @@
+{
+  "name": "ygopro-message-logger",
+  "description": "Big Brother is watching you!",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "pg": "^7.0.2"
+  }
+}
