@@ -4,14 +4,16 @@ bodyParser = require 'body-parser'
 
 server = express()
 
-jsonParser = bodyParser.json()
+server.use bodyParser.urlencoded { extended: false }
 
-server.post '/', jsonParser, (req, res) ->
+server.post '/', (req, res) ->
+  console.log req.body
   sender = req.body.sender || '神秘骇客'
   level = req.body.level || 999
   content = req.body.content || '神秘消息'
   match = req.body.match || '神奇对决'
-  database.saveMessage sender, content, level, match, (result) ->
+  ip = req.body.ip || '0.0.0.0'
+  database.saveMessage sender, content, level, match, ip, (result) ->
     res.statusCode = if result then 200 else 500
     res.end 'ok'
 
