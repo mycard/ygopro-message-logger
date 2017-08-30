@@ -16,7 +16,6 @@
 
   server.post('/', function(req, res) {
     var content, ip, level, match, sender;
-    console.log(req.body);
     sender = req.body.sender || '神秘骇客';
     level = req.body.level || 999;
     content = req.body.content || '神秘消息';
