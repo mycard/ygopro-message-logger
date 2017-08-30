@@ -7,7 +7,6 @@ server = express()
 server.use bodyParser.urlencoded { extended: false }
 
 server.post '/', (req, res) ->
-  console.log req.body
   sender = req.body.sender || '神秘骇客'
   level = req.body.level || 999
   content = req.body.content || '神秘消息'
