@@ -2,9 +2,13 @@
   "name": "ygopro-message-logger",
   "description": "Big Brother is watching you!",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "express": "^4.15.3",
-    "moment": "^2.18.1",
+    "body-parser": "^1.18.3",
+    "coffeescript": "^2.3.1",
+    "express": "^4.16.3",
+    "moment": "^2.22.2",
     "pg": "^7.0.2"
+  },
+  "scripts": {
+    "start": "coffee server.coffee"
   }
 }

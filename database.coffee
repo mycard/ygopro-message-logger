@@ -25,3 +25,9 @@ module.exports.saveMessage = (sender, content, level, match, ip, callback) ->
       callback.call this, null
     else
       callback.call this, result
+
+SEARCH_USER_IS_BANNED_SQL = 'SELECT * from user_ban_history where username = $1::text and until > $2'
+
+module.exports.queryBan = (user) ->
+    res = await pool.query SEARCH_USER_IS_BANNED_SQL, [user, moment().format('YYYY-MM-DD HH:mm:ss')]
+    res.rows

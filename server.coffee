@@ -16,4 +16,10 @@ server.post '/', (req, res) ->
     res.statusCode = if result then 200 else 500
     res.end 'ok'
 
+server.get '/ban/:user', (req, res) ->
+  record = await database.queryBan req.params.user
+  if record and record.length > 0
+    res.end record[0].level
+  else res.end 'no'
+
 server.listen 1984
