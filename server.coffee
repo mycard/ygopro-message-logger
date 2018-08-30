@@ -1,6 +1,7 @@
 database = require './database'
 express = require 'express'
 bodyParser = require 'body-parser'
+moment = require 'moment'
 
 server = express()
 
@@ -16,10 +17,17 @@ server.post '/', (req, res) ->
     res.statusCode = if result then 200 else 500
     res.end 'ok'
 
-server.get '/ban/:user', (req, res) ->
-  record = await database.queryBan req.params.user
+
+
+server.get '/ban', (req, res) ->
+  username = req.query.user || req.query.username || "神秘骇客"
+  record = await database.queryBan req.query.user
   if record and record.length > 0
-    res.end record[0].level
-  else res.end 'no'
+    res.json
+      banned: true
+      level: record[0].level
+      until: moment(record[0].until).format()
+  else res.json
+    banned: false
 
 server.listen 1984
