@@ -27,6 +27,7 @@ server.get '/ban', (req, res) ->
       banned: true
       level: record[0].level
       until: moment(record[0].until).format()
+      message: "您已被系统禁言至 #{moment(record[0].until).format('YYYY-MM-DD HH:mm')}，原因为#{record[0].reason}"
   else res.json
     banned: false
 

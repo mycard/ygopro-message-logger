@@ -32,7 +32,7 @@ SEARCH_USER_ID = 'SELECT id from users where username = $1'
 
 module.exports.queryBan = (user) ->
     id = await mycardPool.query SEARCH_USER_ID, [user]
-    return [] unless id.rows
+    return [] unless id.rows and id.rows[0]
     id = id.rows[0].id
     res = await ygoproPool.query SEARCH_USER_IS_BANNED_SQL, [id, moment().format('YYYY-MM-DD HH:mm:ss')]
     res.rows
