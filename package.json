@@ -5,7 +5,7 @@
     "body-parser": "^1.18.3",
     "coffeescript": "^2.3.1",
     "express": "^4.16.3",
-    "moment": "^2.22.2",
+    "moment": "^2.29.2",
     "pg": "^7.0.2"
   },
   "scripts": {
